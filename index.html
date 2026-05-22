@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JayTour 台灣行程資料庫</title>
+
+  <style>
+    body{
+      font-family: Arial;
+      margin:0;
+      padding:20px;
+      background:#f5f5f5;
+    }
+
+    h1{
+      font-size:24px;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:12px;
+      padding:15px;
+      margin-bottom:15px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    button{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      background:#007bff;
+      color:#fff;
+      font-size:16px;
+      margin-top:10px;
+    }
+
+    input, select{
+      width:100%;
+      padding:12px;
+      margin-top:10px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      box-sizing:border-box;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>JayTour 台灣行程資料庫</h1>
+
+  <div class="card">
+    <h2>新增行程</h2>
+
+    <input id="tripName" placeholder="行程名稱">
+
+    <select id="tripDays">
+      <option>1日</option>
+      <option>2天1夜</option>
+      <option>3天2夜</option>
+      <option>5天4夜</option>
+      <option>9天8夜</option>
+    </select>
+
+    <select id="tripRegion">
+      <option>北部</option>
+      <option>中部</option>
+      <option>南部</option>
+      <option>東部</option>
+      <option>環島</option>
+    </select>
+
+    <button onclick="saveTrip()">儲存行程</button>
+  </div>
+
+  <div class="card">
+    <h2>行程列表</h2>
+
+    <div id="tripList"></div>
+  </div>
+
+  <script>
+
+    let trips = [];
+
+    function saveTrip(){
+
+      const name = document.getElementById("tripName").value;
+      const days = document.getElementById("tripDays").value;
+      const region = document.getElementById("tripRegion").value;
+
+      const trip = {
+        name,
+        days,
+        region
+      };
+
+      trips.push(trip);
+
+      renderTrips();
+
+      document.getElementById("tripName").value = "";
+    }
+
+    function renderTrips(){
+
+      const list = document.getElementById("tripList");
+
+      list.innerHTML = "";
+
+      trips.forEach(trip => {
+
+        list.innerHTML += `
+          <div class="card">
+            <b>${trip.name}</b><br>
+            ${trip.days} ｜ ${trip.region}
+          </div>
+        `;
+      });
+    }
+
+  </script>
+
+</body>
+</html>
