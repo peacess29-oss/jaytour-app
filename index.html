@@ -44,6 +44,9 @@
       border:1px solid #ccc;
       box-sizing:border-box;
     }
+select[multiple]{
+  height:120px;
+}
   </style>
 </head>
 
@@ -70,7 +73,7 @@
       <option>11天10夜</option>
     </select>
 
-    <select id="tripRegion">
+    <select id="tripRegion" multiple>
       <option>北部</option>
       <option>中部</option>
       <option>南部</option>
@@ -95,7 +98,10 @@
 
       const name = document.getElementById("tripName").value;
       const days = document.getElementById("tripDays").value;
-      const region = document.getElementById("tripRegion").value;
+      const regionSelect = document.getElementById("tripRegion");
+
+const region = Array.from(regionSelect.selectedOptions)
+  .map(option => option.value);
 
       const trip = {
         name,
@@ -121,7 +127,7 @@
         list.innerHTML += `
           <div class="card">
             <b>${trip.name}</b><br>
-            ${trip.days} ｜ ${trip.region}
+            ${trip.days} ｜ ${trip.region.join("、")}
           </div>
         `;
       });
