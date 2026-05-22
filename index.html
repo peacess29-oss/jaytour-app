@@ -36,16 +36,18 @@
       margin-top:10px;
     }
 
-    input, select{
-      width:100%;
-      padding:12px;
-      margin-top:10px;
-      border-radius:8px;
-      border:1px solid #ccc;
-      box-sizing:border-box;
-    }
+   input, select{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  box-sizing:border-box;
+  font-size:16px;
+}
+
 select[multiple]{
-  height:120px;
+  height:180px;
 }
   </style>
 </head>
@@ -74,12 +76,16 @@ select[multiple]{
     </select>
 
     <select id="tripRegion" multiple>
-      <option>北部</option>
-      <option>中部</option>
-      <option>南部</option>
-      <option>東部</option>
-      <option>環島</option>
-    </select>
+  <option>北部</option>
+  <option>中部</option>
+  <option>南部</option>
+  <option>東部</option>
+  <option>環島</option>
+  <option>北部＋中部</option>
+  <option>中部＋南部</option>
+  <option>南部＋東部</option>
+  <option>北中南環島</option>
+</select>
 
     <button onclick="saveTrip()">儲存行程</button>
   </div>
